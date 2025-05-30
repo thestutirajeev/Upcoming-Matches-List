@@ -8,10 +8,10 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-// Serve static files from frontend build (for deployment)
-//app.use(express.static(path.join(__dirname, '../frontend/build')));
+// Serve static files from frontend build
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// API route to get upcoming matches
+// API to get upcoming matches
 app.get('/api/matches', async (req, res) => {
   try {
     const response = await axios.get('https://www.scorebat.com/video-api/v3/');
@@ -29,10 +29,10 @@ app.get('/api/matches', async (req, res) => {
   }
 });
 
-// Catch-all route to serve React frontend after build
-//app.get('*', (req, res) => {
-//  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-//});
+// Catch-all route 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 
 // Start server
 app.listen(PORT, () => {
