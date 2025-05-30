@@ -1,0 +1,13 @@
+Frontend
+npm create vite@latest frontend
+npm install
+
+# Tailwind
+npm install -D tailwindcss@3 postcss autoprefixer
+npx tailwindcss init -p
+
+
+Backend
+npm init -y
+npm install express axios cors
+npm install --save-dev nodemon
